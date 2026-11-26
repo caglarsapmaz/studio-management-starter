@@ -3,10 +3,20 @@ export const studio = {
   name: "Nova Studio"
 };
 
+// Salon–ders eşleşmesi README'deki "Salonlar ve dersler" bölümünden alındı.
 export const rooms = [
-  "Performans Salonu",
-  "Reformer Salonu",
-  "Denge Salonu"
+  {
+    name: "Performans Salonu",
+    lessons: ["Fitness", "Kişisel Antrenman"]
+  },
+  {
+    name: "Reformer Salonu",
+    lessons: ["Reformer", "Pilates"]
+  },
+  {
+    name: "Denge Salonu",
+    lessons: ["Yoga", "Meditasyon"]
+  }
 ];
 
 export const members = [
