@@ -8,6 +8,7 @@ import {
   sessions
 } from './data/studioData.js';
 
+// STATUS_LABELS: durum kodunu (next, planned...) ekranda görünen Türkçe yazıya çeviren sözlük.
 const STATUS_LABELS = {
   next: 'Sıradaki',
   planned: 'Planlı',
@@ -383,7 +384,9 @@ export default function App() {
             </div>
 
             <ul className="room-list">
+              {/* map: dizideki her eleman için aynı JSX'i üretir. Burada her salon için bir <li>. */}
               {rooms.map((room) => {
+                // filter: tüm derslerden sadece bu salondakileri seçer. s = o anki ders (session).
                 const roomSessions = items.filter((s) => s.room === room.name);
                 return (
                   <li key={room.name} className="room">
@@ -399,6 +402,7 @@ export default function App() {
                       {roomSessions.length === 0 ? (
                         <p>Bugün bu salonda ders yok.</p>
                       ) : (
+                        // map((s) => ...): salondaki her ders için bir <p> üretir; s = sıradaki ders.
                         roomSessions.map((s) => (
                           <p key={s.id}>
                             <Icon name="clock" />
@@ -406,6 +410,7 @@ export default function App() {
                               {s.time} · {s.lesson} · {s.trainer}
                             </span>
                             <span className={`badge badge-${s.status}`}>
+                              {/* Örn. s.status = 'next' ise ekranda 'Sıradaki' yazar. */}
                               {STATUS_LABELS[s.status]}
                             </span>
                           </p>
